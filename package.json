@@ -25,7 +25,13 @@
     "page-loader": "dist/bin/page-loader.js"
   },
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": [
+      "<rootDir>/.compiled/",
+      "<rootDir>/node_modules/",
+      "<rootDir>/.history/",
+      "<rootDir>/dist/"
+    ]
   },
   "homepage": "https://github.com/Snokke/project-lvl3-s358#readme",
   "devDependencies": {
@@ -44,5 +50,8 @@
     "eslint-plugin-lodash-fp": "^2.2.0-a1",
     "jest": "^23.6.0",
     "jest-cli": "^23.6.0"
+  },
+  "dependencies": {
+    "commander": "^2.19.0"
   }
 }
