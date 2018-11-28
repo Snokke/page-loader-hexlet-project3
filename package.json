@@ -1,6 +1,6 @@
 {
   "name": "page-loader-snokke",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Downloads url",
   "main": "index.js",
   "scripts": {
