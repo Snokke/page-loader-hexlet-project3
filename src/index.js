@@ -10,7 +10,6 @@ export default (requestUrl, pathToFile = process.cwd()) => {
   const resultPath = path.join(pathToFile, fileName);
 
   return axios.get(requestUrl)
-    .then(response => response.data)
-    .then(data => fs.promises.writeFile(resultPath, data))
+    .then(response => fs.promises.writeFile(resultPath, response.data))
     .catch(error => error);
 };

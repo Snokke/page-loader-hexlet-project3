@@ -18,12 +18,13 @@ test('Download html page', async () => {
 
   nock(host).get(pathname).reply(200, body);
 
-  const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir()));
+  const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'hexlet-'));
   await loader(filePath, tempDir);
   const fileName = 'hexlet-io-courses.html';
   // const fileName = await fs.promises.readdir(tempDir);
-  const tempFilePath = path.resolve(tempDir, fileName);
-  const data = await fs.promises.readFile(tempFilePath);
+  const tempFilePath = path.join(tempDir, fileName);
+  const data = await fs.promises.readFile(tempFilePath, 'utf8');
+  console.log(tempFilePath);
 
-  expect(data.toString('utf8')).toBe(body);
+  expect(data).toBe(body);
 });
