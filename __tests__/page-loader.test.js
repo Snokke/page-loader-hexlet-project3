@@ -20,8 +20,9 @@ test('Download html page', async () => {
 
   const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir()));
   await loader(filePath, tempDir);
-  const fileName = await fs.promises.readdir(tempDir);
-  const tempFilePath = path.resolve(tempDir, fileName[0]);
+  const fileName = 'hexlet-io-courses.html';
+  // const fileName = await fs.promises.readdir(tempDir);
+  const tempFilePath = path.resolve(tempDir, fileName);
   const data = await fs.promises.readFile(tempFilePath);
 
   expect(data.toString('utf8')).toBe(body);
