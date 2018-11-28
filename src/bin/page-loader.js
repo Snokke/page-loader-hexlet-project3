@@ -8,6 +8,6 @@ program
   .version(version)
   .description(description)
   .arguments('<url>')
-  .option('-o, --output [folder]', 'output folder')
+  .option('-o, --output [folder]', 'output folder', process.cwd())
   .action(requestUrl => loader(requestUrl, program.output))
   .parse(process.argv);

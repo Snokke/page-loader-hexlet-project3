@@ -1,7 +1,7 @@
 {
   "name": "page-loader-snokke",
-  "version": "0.0.5",
-  "description": "Downloads url",
+  "version": "0.0.6",
+  "description": "Program for download pages from web",
   "main": "index.js",
   "scripts": {
     "test": "jest",
@@ -31,6 +31,11 @@
       "<rootDir>/node_modules/",
       "<rootDir>/.history/",
       "<rootDir>/dist/"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "lcov",
+      "text-summary"
     ]
   },
   "homepage": "https://github.com/Snokke/project-lvl3-s358#readme",

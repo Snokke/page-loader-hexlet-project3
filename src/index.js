@@ -3,7 +3,7 @@ import fs from 'fs';
 import url from 'url';
 import path from 'path';
 
-export default (requestUrl, pathToFile = process.cwd()) => {
+export default (requestUrl, pathToFile) => {
   const { hostname, pathname } = url.parse(requestUrl);
   const rawFileName = url.format({ hostname, pathname });
   const fileName = `${rawFileName.replace(/[^a-zA-Z0-9]/g, '-')}.html`;
