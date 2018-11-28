@@ -8,6 +8,6 @@ program
   .version(version)
   .description(description)
   .arguments('<url>')
-  .option('-o, --output [type]', 'output folder')
-  .action((url) => console.log(loader(url)))
+  .option('-o, --output [folder]', 'output folder')
+  .action(requestUrl => loader(requestUrl, program.output))
   .parse(process.argv);

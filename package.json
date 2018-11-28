@@ -1,6 +1,6 @@
 {
   "name": "page-loader-snokke",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Downloads url",
   "main": "index.js",
   "scripts": {
@@ -52,6 +52,8 @@
     "jest-cli": "^23.6.0"
   },
   "dependencies": {
-    "commander": "^2.19.0"
+    "axios": "^0.18.0",
+    "commander": "^2.19.0",
+    "nock": "^10.0.2"
   }
 }
