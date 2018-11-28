@@ -41,5 +41,5 @@ test('Error: 404', async () => {
   const tempDir = await fs.promises.mkdtemp(tempDirName);
   const result = await loader(filePath, tempDir);
 
-  expect(result.status).toBe(status);
+  expect(result.response.status).toBe(status);
 });
