@@ -11,5 +11,5 @@ export default (requestUrl, pathToFile) => {
 
   return axios.get(requestUrl)
     .then(response => fs.promises.writeFile(resultPath, response.data))
-    .catch(error => error);
+    .catch(error => error.response);
 };
