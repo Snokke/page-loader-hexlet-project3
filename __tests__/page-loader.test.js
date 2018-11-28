@@ -15,13 +15,14 @@ test('Download html page', async () => {
   const pathname = '/courses';
   const body = 'html body';
   const filePath = url.format({ host, pathname });
+  const tempDirName = path.join(os.tmpdir(), 'hexlet-');
 
   nock(host).get(pathname).reply(200, body);
 
-  const tempDir = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'hexlet-'));
+  const tempDir = await fs.promises.mkdtemp(tempDirName);
   await loader(filePath, tempDir);
   const fileName = await fs.promises.readdir(tempDir);
-  const tempFilePath = path.join(tempDir, fileName);
+  const tempFilePath = path.join(tempDir, fileName[0]);
   const data = await fs.promises.readFile(tempFilePath, 'utf8');
 
   expect(data).toBe(body);
