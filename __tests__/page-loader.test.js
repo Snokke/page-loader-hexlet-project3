@@ -28,7 +28,7 @@ test('Download html page', async () => {
   expect(data).toBe(body);
 });
 
-test('Error: 404', async () => {
+test('Error', async () => {
   const host = 'https://hexlet.io';
   const pathname = '/fakepath';
   const body = 'html body';
@@ -37,9 +37,7 @@ test('Error: 404', async () => {
   const tempDirName = path.join(os.tmpdir(), 'hexlet-');
 
   nock(host).get(pathname).reply(status, body);
-
   const tempDir = await fs.promises.mkdtemp(tempDirName);
-  const result = await loader(filePath, tempDir);
 
-  expect(result.response.status).toBe(status);
+  expect(loader(filePath, tempDir)).rejects.toThrow(Error);
 });
