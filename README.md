@@ -11,3 +11,4 @@ npm install -g page-loader-snokke
 
 ## Asciinema`s
 Step 1. Download html - [Asciinema](https://asciinema.org/a/th1vMEzRVOHX8JRhyjdf1pBgp?speed=3)
+Step 2. Download all files for html - [Asciinema](https://asciinema.org/a/leQKFxxSzpYEz43vnbdnvwd1S?speed=3)
