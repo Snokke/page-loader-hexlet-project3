@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error: wrong dir 1`] = `"Wrong path: /wrong/path/hexlet-io-courses.html"`;
+
+exports[`Error: wrong url 1`] = `"Request failed with status code 404"`;

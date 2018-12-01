@@ -110,7 +110,7 @@ test('Download local files', async () => {
   expect(receivedCss).toBe(expectedCss);
 });
 
-test('Error', async () => {
+test('Error: wrong url', async () => {
   const host = 'https://hexlet.io';
   const pathname = '/fakepath';
   const body = 'html body';
@@ -121,5 +121,18 @@ test('Error', async () => {
   nock(host).get(pathname).reply(status, body);
   const tempDir = await fs.promises.mkdtemp(tempDirName);
 
-  await expect(loader(filePath, tempDir)).rejects.toThrowError();
+  await expect(loader(filePath, tempDir)).rejects.toThrowErrorMatchingSnapshot();
+});
+
+test('Error: wrong dir', async () => {
+  const host = 'https://hexlet.io';
+  const pathname = '/courses';
+  const body = 'html body';
+  const status = 200;
+  const filePath = url.format({ host, pathname });
+  const wrongDirName = '/wrong/path';
+
+  nock(host).get(pathname).reply(status, body);
+
+  await expect(loader(filePath, wrongDirName)).rejects.toThrowErrorMatchingSnapshot();
 });
