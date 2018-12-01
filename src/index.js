@@ -14,6 +14,19 @@ const tagMapping = {
   link: 'href',
 };
 
+const errorProcessing = (error) => {
+  switch (error.code) {
+    case 'ENOTFOUND':
+      return new Error(`Wrong url: ${error.config.url}`);
+    case 'ENOENT':
+      return new Error(`Wrong path: ${error.path}`);
+    case 'EACCES':
+      return new Error(`Permission denied: ${error.path}`);
+    default:
+      return error;
+  }
+};
+
 const getDirectLinks = (links, baseUrl) => {
   const { protocol, host, pathname } = url.parse(baseUrl);
   return links.map((link) => {
@@ -84,8 +97,6 @@ export default (requestUrl, pathToFile) => {
         log(`Download and save file: ${currentName}`);
         return fs.promises.writeFile(pathForFile, response.data);
       }))))
-    .catch((error) => {
-      log(`Error! ${error.message}. Error with url: ${error.config.url}`);
-      return Promise.reject(error);
-    });
+    .then(() => console.log(`Succesfully download HTML page: '${HtmlName}' to '${pathForDir.replace(dirName, '')}'`))
+    .catch(error => Promise.reject(errorProcessing(error)));
 };
