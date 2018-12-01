@@ -15,3 +15,5 @@ Step 1. Download html - [Asciinema](https://asciinema.org/a/th1vMEzRVOHX8JRhyjdf
 Step 2. Download all files for html - [Asciinema](https://asciinema.org/a/leQKFxxSzpYEz43vnbdnvwd1S?speed=3)
 
 Step 3. Debug - [Asciinema](https://asciinema.org/a/Kzn14DSkGea4des9mt8dlr4SJ?speed=3)
+
+Step 4. Errors processing - [Asciinema](https://asciinema.org/a/1OB6oEwyS3qWnZRFyzGjVtFmb?speed=3)
