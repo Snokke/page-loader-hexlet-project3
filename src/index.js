@@ -3,7 +3,10 @@ import fs from 'fs';
 import url from 'url';
 import cheerio from 'cheerio';
 import path from 'path';
+import debug from 'debug';
 import _ from 'lodash';
+
+const log = debug('page-loader');
 
 const tagMapping = {
   img: 'src',
@@ -64,19 +67,25 @@ export default (requestUrl, pathToFile) => {
         htmlWithLocalLinks,
       } = getLocalResources(response.data, dirName);
       localResourcesLinks = getDirectLinks(_.uniq(localResourcesFilenames), requestUrl);
+      log(`Download page ${requestUrl}`);
+      log(`Save HTML page to: ${pathForHtml}`);
       return fs.promises.writeFile(pathForHtml, htmlWithLocalLinks);
     })
-    .then(() => fs.promises.mkdir(pathForDir))
+    .then(() => {
+      log(`Create dir: ${pathForDir}`);
+      return fs.promises.mkdir(pathForDir);
+    })
     .then(() => Promise.all(localResourcesLinks.map(link => axios
       .get(link, { responseType: 'arraybuffer' })
       .then((response) => {
         const { pathname } = url.parse(link);
         const currentName = formatLink(pathname.substring(1));
         const pathForFile = `${pathForDir}/${currentName}`;
+        log(`Download and save file: ${currentName}`);
         return fs.promises.writeFile(pathForFile, response.data);
       }))))
     .catch((error) => {
-      console.log(`${error.message}. Error with url: ${error.config.url}`);
+      log(`Error! ${error.message}. Error with url: ${error.config.url}`);
       return Promise.reject(error);
     });
 };

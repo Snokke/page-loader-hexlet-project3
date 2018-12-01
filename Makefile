@@ -15,14 +15,7 @@ build:
 	npm run build
 
 test:
-	npm test
+	DEBUG=page-loader npm test
 
 test-watch:
 	npm test --watch
-
-go:
-	rm -rf dist
-	rm -rf tost
-	mkdir tost
-	npm run build
-	./dist/bin/page-loader.js --output /Users/snokke/Snoke/Hexlet/project-lvl3-s358/tost https://svetlana-maksimenko.com
