@@ -15,7 +15,7 @@ const tagMapping = {
   link: 'href',
 };
 
-const errorProcessing = (error) => {
+const getErrorMessage = (error) => {
   switch (error.code) {
     case 'ENOTFOUND':
       return new Error(`Wrong url: ${error.config.url}`);
@@ -43,25 +43,35 @@ const formatLink = (baseUrl, extension) => {
   const rawFileName = url.format({ hostname, pathname });
   const rawFileNameWihtoutSlash = rawFileName[rawFileName.length - 1] === '/' ? rawFileName.slice(0, -1) : rawFileName;
   if (extension) {
-    return `${rawFileNameWihtoutSlash.replace(/[^a-zA-Z0-9]/g, '-')}${extension}`;
+    return `${rawFileNameWihtoutSlash.replace(/\W/g, '-')}${extension}`;
   }
   const newExtension = path.extname(rawFileNameWihtoutSlash);
   const rawFileNameWithoutExt = rawFileNameWihtoutSlash.split(newExtension)[0];
-  return `${rawFileNameWithoutExt.replace(/[^a-zA-Z0-9]/g, '-')}${newExtension}`;
+  return `${rawFileNameWithoutExt.replace(/\W/g, '-')}${newExtension}`;
+};
+
+const isLinkLocal = (link) => {
+  const { hostname } = url.parse(link);
+  return !hostname && link[1] !== '/';
 };
 
 const getLocalResources = (html, dirName) => {
   const $ = cheerio.load(html);
   const links = [];
-  Object.keys(tagMapping).forEach(tag => $(tag).each((i, elem) => {
-    const link = $(elem).attr(tagMapping[tag]);
-    if (link && !url.parse(link).hostname && link[1] !== '/') {
+  Object.keys(tagMapping).forEach(tag => $(tag)
+    .filter((i, elem) => {
+      const link = $(elem).attr(tagMapping[tag]);
+      if (!link) {
+        return false;
+      }
+      return isLinkLocal(link);
+    })
+    .each((i, elem) => {
+      const link = $(elem).attr(tagMapping[tag]);
       links.push(link);
       const newLink = `${dirName}/${formatLink(link)}`;
       return $(elem).attr(tagMapping[tag], newLink);
-    }
-    return '';
-  }));
+    }));
   return { htmlWithLocalLinks: $.html(), localResourcesFilenames: links };
 };
 
@@ -104,5 +114,5 @@ export default (requestUrl, pathToFile) => {
       return tasks.run();
     })
     .then(() => console.log(`Succesfully download HTML page: '${HtmlName}' to '${pathForDir.replace(dirName, '')}'`))
-    .catch(error => Promise.reject(errorProcessing(error)));
+    .catch(error => Promise.reject(getErrorMessage(error)));
 };
