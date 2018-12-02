@@ -17,3 +17,5 @@ Step 2. Download all files for html - [Asciinema](https://asciinema.org/a/leQKFx
 Step 3. Debug - [Asciinema](https://asciinema.org/a/Kzn14DSkGea4des9mt8dlr4SJ?speed=3)
 
 Step 4. Errors processing - [Asciinema](https://asciinema.org/a/1OB6oEwyS3qWnZRFyzGjVtFmb?speed=3)
+
+Step 5. Listr - [Asciinema](https://asciinema.org/a/ojjyEN8EicypM1GlwpEoFlUd7)
