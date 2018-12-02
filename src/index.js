@@ -89,23 +89,20 @@ export default (requestUrl, pathToFile) => {
       log(`Create dir: ${pathForDir}`);
       return fs.promises.mkdir(pathForDir);
     })
-    .then(() => Promise.all(localResourcesLinks.map((link) => {
-      const tasks = new Listr([
-        {
-          title: 'Downloading file',
-          task: (ctx, task) => axios.get(link, { responseType: 'arraybuffer' })
-            .then((response) => {
-              const { pathname } = url.parse(link);
-              const currentName = formatLink(pathname.substring(1));
-              const pathForFile = `${pathForDir}/${currentName}`;
-              log(`Download and save file: ${currentName}`);
-              task.title = `${link}`; // eslint-disable-line
-              return fs.promises.writeFile(pathForFile, response.data);
-            }),
-        },
-      ]);
+    .then(() => {
+      const tasks = new Listr(localResourcesLinks.map(link => ({
+        title: link,
+        task: () => axios.get(link, { responseType: 'arraybuffer' })
+          .then((response) => {
+            const { pathname } = url.parse(link);
+            const currentName = formatLink(pathname.substring(1));
+            const pathForFile = `${pathForDir}/${currentName}`;
+            log(`Download and save file: ${currentName}`);
+            return fs.promises.writeFile(pathForFile, response.data);
+          }),
+      })), { concurrent: true });
       return tasks.run();
-    })))
+    })
     .then(() => console.log(`Succesfully download HTML page: '${HtmlName}' to '${pathForDir.replace(dirName, '')}'`))
     .catch(error => Promise.reject(errorProcessing(error)));
 };

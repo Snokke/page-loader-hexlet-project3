@@ -1,6 +1,6 @@
 {
   "name": "page-loader-snokke",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Program for download pages from web",
   "main": "index.js",
   "scripts": {
