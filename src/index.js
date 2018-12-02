@@ -51,6 +51,9 @@ const formatLink = (baseUrl, extension) => {
 };
 
 const isLinkLocal = (link) => {
+  if (!link) {
+    return false;
+  }
   const { hostname } = url.parse(link);
   return !hostname && link[1] !== '/';
 };
@@ -61,9 +64,6 @@ const getLocalResources = (html, dirName) => {
   Object.keys(tagMapping).forEach(tag => $(tag)
     .filter((i, elem) => {
       const link = $(elem).attr(tagMapping[tag]);
-      if (!link) {
-        return false;
-      }
       return isLinkLocal(link);
     })
     .each((i, elem) => {
