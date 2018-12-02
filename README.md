@@ -18,4 +18,4 @@ Step 3. Debug - [Asciinema](https://asciinema.org/a/Kzn14DSkGea4des9mt8dlr4SJ?sp
 
 Step 4. Errors processing - [Asciinema](https://asciinema.org/a/1OB6oEwyS3qWnZRFyzGjVtFmb?speed=3)
 
-Step 5. Listr - [Asciinema](https://asciinema.org/a/ojjyEN8EicypM1GlwpEoFlUd7)
+Step 5. Listr - [Asciinema](https://asciinema.org/a/uq3vxuBSnSiCBQo0YXpqktZ0j)
