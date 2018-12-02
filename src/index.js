@@ -4,6 +4,7 @@ import url from 'url';
 import cheerio from 'cheerio';
 import path from 'path';
 import debug from 'debug';
+import Listr from 'listr';
 import _ from 'lodash';
 
 const log = debug('page-loader');
@@ -88,15 +89,23 @@ export default (requestUrl, pathToFile) => {
       log(`Create dir: ${pathForDir}`);
       return fs.promises.mkdir(pathForDir);
     })
-    .then(() => Promise.all(localResourcesLinks.map(link => axios
-      .get(link, { responseType: 'arraybuffer' })
-      .then((response) => {
-        const { pathname } = url.parse(link);
-        const currentName = formatLink(pathname.substring(1));
-        const pathForFile = `${pathForDir}/${currentName}`;
-        log(`Download and save file: ${currentName}`);
-        return fs.promises.writeFile(pathForFile, response.data);
-      }))))
+    .then(() => Promise.all(localResourcesLinks.map((link) => {
+      const tasks = new Listr([
+        {
+          title: 'Downloading file',
+          task: (ctx, task) => axios.get(link, { responseType: 'arraybuffer' })
+            .then((response) => {
+              const { pathname } = url.parse(link);
+              const currentName = formatLink(pathname.substring(1));
+              const pathForFile = `${pathForDir}/${currentName}`;
+              log(`Download and save file: ${currentName}`);
+              task.title = `${link}`; // eslint-disable-line
+              return fs.promises.writeFile(pathForFile, response.data);
+            }),
+        },
+      ]);
+      return tasks.run();
+    })))
     .then(() => console.log(`Succesfully download HTML page: '${HtmlName}' to '${pathForDir.replace(dirName, '')}'`))
     .catch(error => Promise.reject(errorProcessing(error)));
 };
