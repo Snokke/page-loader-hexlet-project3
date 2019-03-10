@@ -1,4 +1,4 @@
-# Загрузчик страниц (Hexlet Project 3)
+# Page loader
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/f3f0d04da86250976590/maintainability)](https://codeclimate.com/github/Snokke/project-lvl3-s358/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/f3f0d04da86250976590/test_coverage)](https://codeclimate.com/github/Snokke/project-lvl3-s358/test_coverage)
@@ -11,7 +11,7 @@ npm install -g page-loader-snokke
 
 ## Description
 ```
-Program for download pages from web
+Simple utility for downloading web pages (Hexlet project #3)
 
 Options:
   -V, --version          output the version number
@@ -41,13 +41,5 @@ bash-3.2$ page-loader --output /Users/snokke/test https://www.youtube.com/
 Succesfully download HTML page: 'www-youtube-com.html' to '/Users/snokke/test/'
 ```
 
-## Asciinema`s
-Step 1. Download html - [Asciinema](https://asciinema.org/a/th1vMEzRVOHX8JRhyjdf1pBgp?speed=3)
-
-Step 2. Download all files for html - [Asciinema](https://asciinema.org/a/leQKFxxSzpYEz43vnbdnvwd1S?speed=3)
-
-Step 3. Debug - [Asciinema](https://asciinema.org/a/Kzn14DSkGea4des9mt8dlr4SJ?speed=3)
-
-Step 4. Errors processing - [Asciinema](https://asciinema.org/a/1OB6oEwyS3qWnZRFyzGjVtFmb?speed=3)
-
-Step 5. Listr - [Asciinema](https://asciinema.org/a/uq3vxuBSnSiCBQo0YXpqktZ0j)
+## Demo
+[Asciinema](https://asciinema.org/a/uq3vxuBSnSiCBQo0YXpqktZ0j)
