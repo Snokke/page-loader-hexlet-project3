@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Snokke/project-lvl3-s358.git"
+    "url": "git+https://github.com/Snokke/page-loader-hexlet-project3.git"
   },
   "author": "Andrei Babintsev",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Snokke/project-lvl3-s358/issues"
+    "url": "https://github.com/Snokke/page-loader-hexlet-project3/issues"
   },
   "files": [
     "dist"
@@ -38,7 +38,7 @@
       "text-summary"
     ]
   },
-  "homepage": "https://github.com/Snokke/project-lvl3-s358#readme",
+  "homepage": "https://github.com/Snokke/page-loader-hexlet-project3#readme",
   "devDependencies": {
     "@babel/cli": "^7.1.5",
     "@babel/core": "^7.1.6",

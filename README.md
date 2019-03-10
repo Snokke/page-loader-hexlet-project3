@@ -1,8 +1,8 @@
 # Page loader
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/f3f0d04da86250976590/maintainability)](https://codeclimate.com/github/Snokke/project-lvl3-s358/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/f3f0d04da86250976590/test_coverage)](https://codeclimate.com/github/Snokke/project-lvl3-s358/test_coverage)
-[![Build Status](https://travis-ci.org/Snokke/project-lvl3-s358.svg?branch=master)](https://travis-ci.org/Snokke/project-lvl3-s358)
+[![Maintainability](https://api.codeclimate.com/v1/badges/0e8a8fba3bb00761e325/maintainability)](https://codeclimate.com/github/Snokke/page-loader-hexlet-project3/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0e8a8fba3bb00761e325/test_coverage)](https://codeclimate.com/github/Snokke/page-loader-hexlet-project3/test_coverage)
+[![Build Status](https://travis-ci.org/Snokke/page-loader-hexlet-project3.svg?branch=master)](https://travis-ci.org/Snokke/page-loader-hexlet-project3)
 
 ## Install
 ```sh

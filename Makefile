@@ -25,4 +25,4 @@ go:
 	rm -rf tost
 	mkdir tost
 	npm run build
-	./dist/bin/page-loader.js --output /Users/snokke/Snoke/Hexlet/project-lvl3-s358/tost https://www.youtube.com/
+	./dist/bin/page-loader.js --output /Users/snokke/Snoke/Hexlet/page-loader-hexlet-project3/tost https://www.youtube.com/
