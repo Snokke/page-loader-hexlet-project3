@@ -11,7 +11,7 @@ npm install -g page-loader-snokke
 
 ## Description
 ```
-Simple utility for downloading web pages (Hexlet project #3)
+Simple utility for downloading web pages
 
 Options:
   -V, --version          output the version number
